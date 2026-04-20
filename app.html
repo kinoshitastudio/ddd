@@ -308,8 +308,8 @@ tailwind.config = {
             padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
         }
         main {
-            /* keep scrollable content clear of the floating nav + terminal */
-            padding-bottom: calc(54px + env(safe-area-inset-bottom, 0px) + var(--ddd-term-h, 0px));
+            /* keep scrollable content clear of the floating nav — terminal is now on top */
+            padding-bottom: calc(54px + env(safe-area-inset-bottom, 0px));
         }
     }
 
@@ -353,14 +353,24 @@ tailwind.config = {
         }
         main { margin-right: var(--ddd-term-w); }
     }
-    /* Mobile: bottom dock above nav */
+    /* Mobile: top dock (above all views) — bottom-nav stays for view switching */
     @media (max-width: 768px) {
         #ddd-term {
+            top: 0;
             left: 0;
             right: 0;
-            bottom: calc(54px + env(safe-area-inset-bottom, 0px));
-            height: var(--ddd-term-h);
-            border-top: 2px solid #E13437;
+            bottom: auto;
+            width: auto;
+            /* include iPhone notch inset in total height */
+            height: calc(var(--ddd-term-h) + env(safe-area-inset-top, 0px));
+            padding-top: env(safe-area-inset-top, 0px);
+            border-left: none;
+            border-top: none;
+            border-bottom: 2px solid #E13437;
+        }
+        /* Shift every view downward so it isn't hidden behind terminal */
+        .view {
+            top: calc(var(--ddd-term-h) + env(safe-area-inset-top, 0px)) !important;
         }
     }
 
@@ -380,7 +390,10 @@ tailwind.config = {
     }
     @media (max-width: 768px) {
         .ddd-term-grip {
-            left: 0; right: 0; top: 0;
+            top: auto;
+            left: 0; right: 0;
+            bottom: 0;            /* grip on BOTTOM edge — drag downward to grow */
+            width: auto;
             height: 8px;
             cursor: row-resize;
         }
@@ -1345,7 +1358,8 @@ setInterval(() => {
                 document.documentElement.style.setProperty('--ddd-term-w', w + 'px');
                 prefs.termW = w;
             } else {
-                const delta = startPos - e.clientY;        // drag up grows panel
+                /* Mobile top dock: grip on bottom edge, drag DOWN grows panel */
+                const delta = e.clientY - startPos;
                 const h = Math.max(44, Math.min(Math.round(window.innerHeight * 0.55), startSize + delta));
                 document.documentElement.style.setProperty('--ddd-term-h', h + 'px');
                 prefs.termH = h;
