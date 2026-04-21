@@ -1,164 +1,57 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" shape-rendering="crispEdges">
   <title>DDD — Density · Daily · Design</title>
-  <defs>
-    <!-- Subtle noise texture (diagonal lines) -->
-    <pattern id="grid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#121924" stroke-width="0.5"/>
-    </pattern>
-    <!-- Noise gradient -->
-    <radialGradient id="vignette" cx="50%" cy="50%" r="70%">
-      <stop offset="0%"  stop-color="#0B111F" stop-opacity="0"/>
-      <stop offset="100%" stop-color="#000000" stop-opacity="0.6"/>
-    </radialGradient>
-  </defs>
 
-  <!-- Deep ink ground -->
+  <!-- ground -->
   <rect width="1200" height="630" fill="#0B111F"/>
-  <rect width="1200" height="630" fill="url(#grid)" opacity="0.7"/>
-  <rect width="1200" height="630" fill="url(#vignette)"/>
 
-  <!-- ═════════════ 365-day density ribbon (top band) ═════════════ -->
-  <g transform="translate(40, 60)">
-    <text x="0" y="0" font-family="'Space Mono', Courier, monospace" font-size="11" letter-spacing="4" fill="#8f98a8">365 DAYS · TASK DENSITY</text>
-    <!-- 53 columns × 7 rows, each 14×14 with 3px gap -->
-    <g transform="translate(0, 20)">
-      <!-- Script to generate: for i in range(53*7) with varying intensity -->
-      <!-- Columns laid out manually with sample density -->
-      <g id="cells">
-        <!-- Render manually with a pseudo-random pattern -->
-      </g>
+  <!-- faint scanline texture -->
+  <g opacity="0.06">
+    <pattern id="scan" x="0" y="0" width="4" height="4" patternUnits="userSpaceOnUse">
+      <rect width="4" height="1" fill="#ffffff"/>
+    </pattern>
+    <rect width="1200" height="630" fill="url(#scan)"/>
+  </g>
+
+  <!-- subtle density dot field (bottom-left) -->
+  <g fill="#2D3748">
+    <g transform="translate(72,420)">
+      <g id="row"><rect x="0"  y="0" width="6" height="6"/><rect x="14" y="0" width="6" height="6"/><rect x="28" y="0" width="6" height="6"/><rect x="42" y="0" width="6" height="6"/><rect x="56" y="0" width="6" height="6"/><rect x="70" y="0" width="6" height="6"/><rect x="84" y="0" width="6" height="6"/><rect x="98" y="0" width="6" height="6"/><rect x="112" y="0" width="6" height="6"/><rect x="126" y="0" width="6" height="6"/><rect x="140" y="0" width="6" height="6"/><rect x="154" y="0" width="6" height="6"/><rect x="168" y="0" width="6" height="6"/><rect x="182" y="0" width="6" height="6"/><rect x="196" y="0" width="6" height="6"/><rect x="210" y="0" width="6" height="6"/></g>
+      <use href="#row" y="14"/>
+      <use href="#row" y="28"/>
+      <use href="#row" y="42"/>
+      <use href="#row" y="56"/>
+      <use href="#row" y="70"/>
+      <use href="#row" y="84"/>
     </g>
   </g>
 
-  <!-- ═════════════ Big DDD wordmark (center-left) ═════════════ -->
-  <g transform="translate(80, 280)">
-    <!-- DDD — three bold rounded-rect "D" letterforms -->
-    <g fill="#FFFFFF">
-      <!-- D 1 -->
-      <path d="M 0 0 L 0 160 L 80 160 C 124 160, 160 124, 160 80 C 160 36, 124 0, 80 0 Z M 28 28 L 80 28 C 109 28, 132 51, 132 80 C 132 109, 109 132, 80 132 L 28 132 Z" opacity="0.95"/>
-      <!-- D 2 -->
-      <g transform="translate(190, 0)">
-        <path d="M 0 0 L 0 160 L 80 160 C 124 160, 160 124, 160 80 C 160 36, 124 0, 80 0 Z M 28 28 L 80 28 C 109 28, 132 51, 132 80 C 132 109, 109 132, 80 132 L 28 132 Z" opacity="0.95"/>
-      </g>
-      <!-- D 3 -->
-      <g transform="translate(380, 0)">
-        <path d="M 0 0 L 0 160 L 80 160 C 124 160, 160 124, 160 80 C 160 36, 124 0, 80 0 Z M 28 28 L 80 28 C 109 28, 132 51, 132 80 C 132 109, 109 132, 80 132 L 28 132 Z" opacity="0.95"/>
-      </g>
-    </g>
-    <!-- The accent dot (like the favicon) — anchors the mark -->
-    <circle cx="600" cy="80" r="18" fill="#E13437"/>
+  <!-- 8×8 pixel "D" on the right, scaled up (cell = 44px) -->
+  <svg x="644" y="139" width="352" height="352" viewBox="0 0 8 8" shape-rendering="crispEdges">
+    <rect x="0" y="0" width="6" height="1" fill="#FFFFFF"/>
+    <rect x="0" y="1" width="1" height="1" fill="#FFFFFF"/>
+    <rect x="6" y="1" width="1" height="1" fill="#FFFFFF"/>
+    <rect x="0" y="2" width="1" height="4" fill="#FFFFFF"/>
+    <rect x="7" y="2" width="1" height="4" fill="#FFFFFF"/>
+    <rect x="0" y="6" width="1" height="1" fill="#FFFFFF"/>
+    <rect x="6" y="6" width="1" height="1" fill="#FFFFFF"/>
+    <rect x="0" y="7" width="6" height="1" fill="#FFFFFF"/>
+  </svg>
+
+  <!-- title lockup (left block) -->
+  <g font-family="'Space Mono','Courier New',monospace" fill="#FFFFFF">
+    <text x="96" y="210" font-size="96" font-weight="700" letter-spacing="-2">DDD</text>
+    <text x="96" y="258" font-size="18" fill="#6B7A90" letter-spacing="6">DENSITY  ·  DAILY  ·  DESIGN</text>
+    <text x="96" y="320" font-size="20" fill="#AAB4C4">Five tasks. Sequential. Pixel density log.</text>
+    <text x="96" y="346" font-size="20" fill="#AAB4C4">No account. No cloud. One HTML file.</text>
   </g>
 
-  <!-- ═════════════ Subtitle & tagline ═════════════ -->
-  <g transform="translate(80, 490)">
-    <text font-family="'Space Mono', Courier, monospace" font-size="22" letter-spacing="10" fill="#FFFFFF" font-weight="700">
-      DENSITY · DAILY · DESIGN
-    </text>
-    <text y="34" font-family="'Space Mono', Courier, monospace" font-size="14" letter-spacing="3" fill="#AAB4C4">
-      5 tasks per day · sequential · 365-day density grid
-    </text>
-    <text y="62" font-family="'Space Mono', Courier, monospace" font-size="11" letter-spacing="4" fill="#E13437" font-weight="700">
-      ◼ KINOSHITA STUDIO · 2026
-    </text>
+  <!-- bottom signature strip -->
+  <g font-family="'Space Mono','Courier New',monospace" fill="#6B7A90" font-size="14" letter-spacing="6">
+    <text x="96" y="570">,ai  /  2026</text>
+    <text x="1104" y="570" text-anchor="end">v1  ·  local-first</text>
   </g>
 
-  <!-- ═════════════ Right-side accent: timer arc ═════════════ -->
-  <g transform="translate(960, 170)">
-    <!-- Outer ring -->
-    <circle cx="120" cy="120" r="118" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
-    <!-- 12 o'clock anchor -->
-    <circle cx="120" cy="2" r="4" fill="#E13437"/>
-    <!-- Sector (like the Time Timer) — 3/4 filled (clockwise from 12) -->
-    <path d="M 120 120 L 120 2 A 118 118 0 0 1 120 238 A 118 118 0 0 1 2 120 Z" fill="#E13437" opacity="0.85"/>
-    <!-- Inner disc for legibility -->
-    <circle cx="120" cy="120" r="8" fill="#0B111F"/>
-    <!-- Tick marks at quarter positions -->
-    <g stroke="rgba(255,255,255,0.4)" stroke-width="1">
-      <line x1="120" y1="8"   x2="120" y2="20"/>
-      <line x1="232" y1="120" x2="220" y2="120"/>
-      <line x1="120" y1="232" x2="120" y2="220"/>
-      <line x1="8"   y1="120" x2="20"  y2="120"/>
-    </g>
-  </g>
-
-  <!-- ═════════════ Bottom-right: cell grid mini sample ═════════════ -->
-  <g transform="translate(80, 90)">
-    <!-- Row-major grid of 52 × 7 cells, each 14×14 with gap 3 = 17 step -->
-    <!-- Intensity pattern: simulate weekly variance -->
-    <!-- To keep SVG compact, manually-defined cells with four opacity classes -->
-    <g fill="#E13437">
-      <!-- week 0 -->
-      <rect x="0"   y="0"  width="14" height="14" opacity="0.12"/>
-      <rect x="0"   y="17" width="14" height="14" opacity="0.3"/>
-      <rect x="0"   y="34" width="14" height="14" opacity="0.6"/>
-      <rect x="0"   y="51" width="14" height="14" opacity="0.85"/>
-      <rect x="0"   y="68" width="14" height="14" opacity="0.4"/>
-      <rect x="0"   y="85" width="14" height="14" opacity="0.12"/>
-      <rect x="0"   y="102" width="14" height="14" opacity="0.12"/>
-      <!-- week 1 -->
-      <rect x="17"  y="0"  width="14" height="14" opacity="0.3"/>
-      <rect x="17"  y="17" width="14" height="14" opacity="0.85"/>
-      <rect x="17"  y="34" width="14" height="14" opacity="1.0"/>
-      <rect x="17"  y="51" width="14" height="14" opacity="0.6"/>
-      <rect x="17"  y="68" width="14" height="14" opacity="0.3"/>
-      <rect x="17"  y="85" width="14" height="14" opacity="0.12"/>
-      <rect x="17"  y="102" width="14" height="14" opacity="0.4"/>
-      <!-- week 2 -->
-      <rect x="34"  y="0"  width="14" height="14" opacity="0.6"/>
-      <rect x="34"  y="17" width="14" height="14" opacity="1.0"/>
-      <rect x="34"  y="34" width="14" height="14" opacity="0.85"/>
-      <rect x="34"  y="51" width="14" height="14" opacity="0.3"/>
-      <rect x="34"  y="68" width="14" height="14" opacity="0.6"/>
-      <rect x="34"  y="85" width="14" height="14" opacity="0.4"/>
-      <rect x="34"  y="102" width="14" height="14" opacity="0.12"/>
-      <!-- week 3 -->
-      <rect x="51"  y="0"  width="14" height="14" opacity="0.85"/>
-      <rect x="51"  y="17" width="14" height="14" opacity="0.6"/>
-      <rect x="51"  y="34" width="14" height="14" opacity="0.3"/>
-      <rect x="51"  y="51" width="14" height="14" opacity="0.12"/>
-      <rect x="51"  y="68" width="14" height="14" opacity="0.85"/>
-      <rect x="51"  y="85" width="14" height="14" opacity="1.0"/>
-      <rect x="51"  y="102" width="14" height="14" opacity="0.6"/>
-      <!-- week 4 -->
-      <rect x="68"  y="0"  width="14" height="14" opacity="0.4"/>
-      <rect x="68"  y="17" width="14" height="14" opacity="0.12"/>
-      <rect x="68"  y="34" width="14" height="14" opacity="0.3"/>
-      <rect x="68"  y="51" width="14" height="14" opacity="0.85"/>
-      <rect x="68"  y="68" width="14" height="14" opacity="1.0"/>
-      <rect x="68"  y="85" width="14" height="14" opacity="0.6"/>
-      <rect x="68"  y="102" width="14" height="14" opacity="0.3"/>
-      <!-- week 5 -->
-      <rect x="85"  y="0"  width="14" height="14" opacity="0.12"/>
-      <rect x="85"  y="17" width="14" height="14" opacity="0.4"/>
-      <rect x="85"  y="34" width="14" height="14" opacity="0.85"/>
-      <rect x="85"  y="51" width="14" height="14" opacity="1.0"/>
-      <rect x="85"  y="68" width="14" height="14" opacity="0.6"/>
-      <rect x="85"  y="85" width="14" height="14" opacity="0.3"/>
-      <rect x="85"  y="102" width="14" height="14" opacity="0.12"/>
-      <!-- weeks 6-9 decreasing -->
-      <rect x="102" y="0"  width="14" height="14" opacity="0.3"/>
-      <rect x="102" y="17" width="14" height="14" opacity="0.6"/>
-      <rect x="102" y="34" width="14" height="14" opacity="0.85"/>
-      <rect x="102" y="51" width="14" height="14" opacity="1.0"/>
-      <rect x="102" y="68" width="14" height="14" opacity="0.85"/>
-      <rect x="102" y="85" width="14" height="14" opacity="0.6"/>
-      <rect x="102" y="102" width="14" height="14" opacity="0.3"/>
-      <rect x="119" y="0"  width="14" height="14" opacity="0.6"/>
-      <rect x="119" y="17" width="14" height="14" opacity="0.3"/>
-      <rect x="119" y="34" width="14" height="14" opacity="0.12"/>
-      <rect x="119" y="51" width="14" height="14" opacity="0.4"/>
-      <rect x="119" y="68" width="14" height="14" opacity="0.85"/>
-      <rect x="119" y="85" width="14" height="14" opacity="1.0"/>
-      <rect x="119" y="102" width="14" height="14" opacity="0.6"/>
-    </g>
-  </g>
-
-  <!-- Top tagline -->
-  <text x="40" y="45" font-family="'Space Mono', Courier, monospace" font-size="10" letter-spacing="5" fill="#8f98a8">
-    ◼ KINOSHITA STUDIO
-  </text>
-  <text x="1160" y="45" text-anchor="end" font-family="'Space Mono', Courier, monospace" font-size="10" letter-spacing="5" fill="#8f98a8">
-    DDD · v1.0 · 2026
-  </text>
+  <!-- red accent dot (favicon echo) -->
+  <rect x="96" y="108" width="10" height="10" fill="#E13437"/>
 </svg>
